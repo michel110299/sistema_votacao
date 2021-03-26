@@ -2,26 +2,36 @@
 
 {%block conteudo%}
  
-<main>
-    <div class="row">
-        <div class="col s4 offset-s1 ">
-            <div class="row">
-                <div class="col s12 margin20 ">
-                    <a class=" btn waves-effect blue-grey lighten-1 z-depth-1 " href="{% url 'registrar_pessoa'%}">
-                        <i class="material-icons right">app_registration</i> Pessoas
-                    </a>
-                </div>
-                <div class="col s12 margin20 ">
-                    <a class=" btn waves-effect blue-grey lighten-1 z-depth-1 " href="{% url 'registrar_votacao'%}">
-                        <i class="material-icons right">app_registration</i> Votações
-                    </a>
-                </div>
-                <div class="col s12 margin20 ">
-                    <a class=" btn waves-effect blue-grey lighten-1 z-depth-1 " href="{% url 'registrar_opcao_voto'%}">
-                        <i class="material-icons right">app_registration</i> opção voto
-                    </a>
-                </div>
-             </div>
+    <main>
+    <div class="container">
+        <div class="row">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Data Iníco</th>
+                        <th>Data Termino</th>
+                    </tr>
+                </thead>            
+                <tbody>
+                    {% for obj in listVotacoes %}
+                        <tr>
+                            <td>
+                                {{ obj.nome_completo }}
+                            </td>
+                            <td>
+                                {{ obj.horario_inicio }}
+                            </td>
+                            <td>
+                                {{ obj.horario_termino }}
+                            </td>
+                            <td>
+                                <a href="{% url 'validacao_pessoa' obj.id %}">Votar</a>
+                            </td>
+                        </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
         </div>
     </div>
 </main>

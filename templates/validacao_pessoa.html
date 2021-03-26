@@ -1,0 +1,25 @@
+{%extends "base.html"%}
+
+{%block conteudo%}
+ 
+<main>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="input-field">
+            <input id="icon_prefix" type="text"  name="cpf" class="validate">
+            <label for="icon_prefix">cpf</label> 
+        </div>
+
+        <button type="submit">enviar</button>   
+
+
+    </form>
+    
+
+
+</main>
+
+ 
+{%endblock conteudo%}

@@ -1,0 +1,76 @@
+{%extends "base.html" %}
+{% load materializecss %}
+{%block conteudo%}
+
+<main>
+    <div class="row">
+        <div class="col s10 offset-s1 margin20">
+            <table>
+                <thead>
+                  <tr>
+                      <th>Nome</th>
+                      <th>Descrição</th>
+                      <th>Anonimo</th>
+                      <th>Voto unico</th>
+                      <th>Horário de inicio</th>
+                      <th>Horário de termino</th>
+                      <th>Horário de criação</th>
+                  </tr>
+                </thead>
+        
+                <tbody>
+                  <tr>
+                    <td>{{votacao.nome_completo}}</td>
+                    <td>{{votacao.descricao}}</td>
+                     {%if votacao.anonimo == True%}
+                        <td>sim</td>
+                    {%endif%}
+
+                    {%if votacao.anonimo != True%}
+                        <td>não</td>
+                    {%endif%}
+                    
+                    {%if votacao.voto_unico == True%}
+                        <td>sim</td>
+                    {%endif%}
+                    {%if votacao.voto_unico != True%}
+                        <td>não</td>
+                    {%endif%} 
+                    <!-- <td>{{votacao.anonimo}}</td>
+                    <td>{{votacao.voto_unico}}</td> -->
+                    <td>{{votacao.horario_inicio}}</td>
+                    <td>{{votacao.horario_termino}}</td>
+                    <td>{{votacao.horario_criacao}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+        </div>
+        <div class="col s12 center margin20 ">
+            <a class=" btn waves-effect blue-grey lighten-1 z-depth-1 " href="{% url 'index'%}">
+                <i class="material-icons right">widgets</i>Menu
+            </a>
+        
+        </div>
+    </div>
+
+</main>
+
+
+
+{%endblock conteudo%}
+
+{% block scripts%}
+
+<!-- <script>
+
+    $(document).ready(function(){
+        
+
+        $("#id_data_nascimento").mask("00/00/0000");
+    });
+
+</script> -->
+
+
+{% endblock%}

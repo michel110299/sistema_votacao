@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    <script
-        src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous">
-    </script>
-    <script type="text/javascript" src="{% static 'https://code.jquery.com/jquery-3.2.1.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
-    <script src="{% static 'js/jquery.mask.min.js'%}"></script>
-
-    <title>Document</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous">
+        </script>
+        <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/materializedatetimepicker.js' %}"></script>
+        <!-- <script type="text/javascript" src="{% static 'js/main.js' %}"></script> -->
+        <script src="{% static 'js/jquery.mask.min.js'%}"></script>
+    
+        <title>Document</title>
+    </head> 
 <body>
 
     <header>
@@ -28,9 +29,9 @@
             <div class="nav-wrapper blue-grey darken-2">
                 <a href="#" class="brand-logo center">{{nome_pagina}}</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <!-- <li><a href="sass.html">Sass</a></li>
-                    <li><a href="badges.html">Components</a></li>
-                    <li><a href="collapsible.html">JavaScript</a></li> -->
+                    <li><a href="{% url 'registrar_pessoa'%}">Pessoas</a></li>
+                    <li><a href="{% url 'registrar_votacao'%}">Votações</a></li>
+                    <li><a href="{% url 'registrar_opcao_voto'%}">Opção de voto</a></li>
                 </ul>
             </div>
         </nav>
@@ -50,32 +51,32 @@
 
     $(document).ready(function(){
         $('select').formSelect();
-        $('.datepicker').datepicker({
-            i18n: {
-            months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-            monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-            weekdays: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabádo'],
-            weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
-            weekdaysAbbrev: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
-            today: 'Hoje',
-            clear: 'Limpar',
-            cancel: 'Sair',
-            done: 'Confirmar',
-            labelMonthNext: 'Próximo mês',
-            labelMonthPrev: 'Mês anterior',
-            labelMonthSelect: 'Selecione um mês',
-            labelYearSelect: 'Selecione um ano',
-            selectMonths: true,
-            selectYears: 15,
-            },
+        // // $('.datepicker').datepicker({
+        //     i18n: {
+        //     months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        //     monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        //     weekdays: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabádo'],
+        //     weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+        //     weekdaysAbbrev: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+        //     today: 'Hoje',
+        //     clear: 'Limpar',
+        //     cancel: 'Sair',
+        //     done: 'Confirmar',
+        //     labelMonthNext: 'Próximo mês',
+        //     labelMonthPrev: 'Mês anterior',
+        //     labelMonthSelect: 'Selecione um mês',
+        //     labelYearSelect: 'Selecione um ano',
+        //     selectMonths: true,
+        //     selectYears: 15,
+        //     },
             
-            format: 'yyyy-mm-dd',
-            container: 'body',
-            yearRange: 80,
-            maxDate: new Date(),
+        //     format: 'yyyy-mm-dd',
+        //     container: 'body',
+        //     yearRange: 80,
+        //     maxDate: new Date(),
 
             
-        });
+        // });
             
     });
 

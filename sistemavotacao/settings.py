@@ -31,6 +31,7 @@ INSTALLED_APPS = [
 INSTALLED_APPS += [
     'cadastro',
     'adm_votocao',
+    'home',
 ]
 
 MIDDLEWARE = [

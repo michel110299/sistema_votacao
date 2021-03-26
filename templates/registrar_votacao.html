@@ -1,13 +1,16 @@
 {%extends "base.html" %}
 {% load materializecss %}
 {%block conteudo%}
-<script>
-     $(document).ready(function(){
-        $("#id_horario_inicio").addClass('datepicker','timepicker').attr("type","text");       
-        $("#id_horario_termino").addClass('datepicker').attr("type","text");     
-    }); 
+  <script>
+        $(document).ready(function(){
+            $("#id_horario_inicio").attr("type","text");
+            $("#id_horario_termino").attr("type","text");    
+            M.AutoInit();
+            var dateField = MaterialDateTimePicker.create($('#id_horario_inicio'))
+            var dateField = MaterialDateTimePicker.create($('#id_horario_termino'))   
+        }); 
 
-</script>
+</script>  
 <main>
     <div class="row ">
         <div class="col s8 offset-s2 container z-depth-5 margin20 ">
@@ -36,11 +39,9 @@
                 <thead>
                   <tr>
                       <th>Nome</th>
-                      <th>Descrição</th>
-                      <th>Anônimo</th>
-                      <th>Voto unico</th>
                       <th>Horário de inicio</th>
                       <th>Horário do término</th>
+                      <th>Mais Informações</th>
                   </tr>
                 </thead>
         
@@ -48,11 +49,13 @@
                     {%for x in todas_votacoes%}
                         <tr>
                             <td>{{x.nome_completo}}</td>
-                            <td>{{x.descricao}}</td>
-                            <td>{{x.anonimo}}</td>
-                            <td>{{x.voto_unico}}</td>
                             <td>{{x.horario_inicio}}</td>
                             <td>{{x.horario_termino}}</td>
+                            <td>
+                                <a href="{% url 'informacoes_votacao' id=x.id %}">
+                                    Ver informações
+                                </a>
+                            </td>
                         </tr>
                     {%endfor%}
                 </tbody>

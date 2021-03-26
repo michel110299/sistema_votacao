@@ -55,13 +55,13 @@ class Votacao(models.Model):
         verbose_name = "Voto unico",
     )
     horario_inicio = models.DateTimeField(
-        verbose_name="Data de inicio da votação",
+        verbose_name="",
         auto_now= False,
         blank = True, 
         null = True,
     )
     horario_termino = models.DateTimeField(
-        verbose_name="Data do termino da votação",
+        verbose_name="",
         auto_now= False,
         blank = True, 
         null = True,

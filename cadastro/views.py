@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from cadastro.forms import *
 from cadastro.models import * 
@@ -50,6 +50,19 @@ def registrar_votacao(request):
 
     return render(request,"registrar_votacao.html",context)
 
+def informacoes_votacao(request,id):
+
+    votacao = get_object_or_404(
+        Votacao,
+        id=id
+    )
+
+    context = {
+        "nome_pagina" : "Informações da votação",
+        "votacao" : votacao,
+        }
+    return render(request,"informacoes_votacao.html",context)
+
 def registrar_opcao_voto(request):
 
 
@@ -76,12 +89,6 @@ def registrar_opcao_voto(request):
 
 
 
-def index(request):
 
-    context = {
-         "nome_pagina": "Menu",
-    }
-
-    return render(request,"index.html",context)
 
 
