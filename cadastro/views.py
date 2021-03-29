@@ -20,7 +20,7 @@ def registrar_pessoa(request):
     context = {
         "form": form,
         "todas_pessoas" : todas_pessoas,
-        "nome_pagina": "Pessoa",
+        "nome_pagina": "Casdatro eleitor",
 
     }
 

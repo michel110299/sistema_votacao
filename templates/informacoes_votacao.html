@@ -36,8 +36,6 @@
                     {%if votacao.voto_unico != True%}
                         <td>não</td>
                     {%endif%} 
-                    <!-- <td>{{votacao.anonimo}}</td>
-                    <td>{{votacao.voto_unico}}</td> -->
                     <td>{{votacao.horario_inicio}}</td>
                     <td>{{votacao.horario_termino}}</td>
                     <td>{{votacao.horario_criacao}}</td>
@@ -46,12 +44,7 @@
               </table>
 
         </div>
-        <div class="col s12 center margin20 ">
-            <a class=" btn waves-effect blue-grey lighten-1 z-depth-1 " href="{% url 'index'%}">
-                <i class="material-icons right">widgets</i>Menu
-            </a>
         
-        </div>
     </div>
 
 </main>

@@ -17,26 +17,51 @@
         </script>
         <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/materializedatetimepicker.js' %}"></script>
-        <!-- <script type="text/javascript" src="{% static 'js/main.js' %}"></script> -->
         <script src="{% static 'js/jquery.mask.min.js'%}"></script>
     
         <title>Document</title>
     </head> 
 <body>
-
+    
     <header>
         <nav>
             <div class="nav-wrapper blue-grey darken-2">
-                <a href="#" class="brand-logo center">{{nome_pagina}}</a>
+                <a href="#" class="brand-logo ">{{nome_pagina}}</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="{% url 'registrar_pessoa'%}">Pessoas</a></li>
-                    <li><a href="{% url 'registrar_votacao'%}">Votações</a></li>
-                    <li><a href="{% url 'registrar_opcao_voto'%}">Opção de voto</a></li>
+                    <li><a 
+                        href="{% url 'index'%}">
+                        <i class="material-icons right">widgets</i>
+                        Eleições
+                    </a></li>
+                    <li><a 
+                        href="{% url 'registrar_pessoa'%}">
+                        <i class="material-icons right">groups</i>
+                        Cadastrar eleitores
+                    </a></li>
+                    <li><a 
+                        href="{% url 'registrar_votacao'%}">
+                        <i class="material-icons right">thumb_up_alt</i>
+                       Cadastrar votações
+                    </a></li>
+                    <li><a 
+                         href="{% url 'registrar_opcao_voto'%}">
+                         <i class="material-icons right">style</i>
+                         Cadastrar Opção de voto
+                    </a></li>
+                   
                 </ul>
             </div>
         </nav>
 
     </header>
+        {%if messages%}
+            {% for mensagem in messages%}
+                <div class="alert alert-success" role="alert">
+                    {{mensagem}}
+                </div>
+            {%endfor%}
+
+        {% endif%}
 
     {% block conteudo %}{% endblock conteudo %}
 
@@ -44,7 +69,7 @@
         <div class="footer-copyright ">
           
         </div>
-      </footer>
+    </footer>
     
     
     <script>

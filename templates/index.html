@@ -26,8 +26,18 @@
                                 {{ obj.horario_termino }}
                             </td>
                             <td>
-                                <a href="{% url 'validacao_pessoa' obj.id %}">Votar</a>
+                                <a class="btn waves-effect green lighten-3 z-depth-1 " href="{% url 'validacao_pessoa' obj.id %}">
+                                    <i class="material-icons right">thumb_up_alt</i>
+                                    Votar
+                                </a>
                             </td>
+                            <td>
+                                <a class="btn waves-effect  red lighten-2 z-depth-1 " href="{% url 'apuracao_votos' obj.id %}">
+                                    <i class="material-icons right">fact_check</i>
+                                    Apuração
+                                </a>
+                            </td>
+                            
                         </tr>
                     {% endfor%}
                 </tbody>

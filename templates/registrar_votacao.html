@@ -27,13 +27,7 @@
                 </div>
                 
             </form>
-        </div>
-        <div class="col s2 margin20 ">
-            <a class=" btn waves-effect blue-grey lighten-1 z-depth-1 " href="{% url 'index'%}">
-                <i class="material-icons right">widgets</i>Menu
-            </a>
-        
-        </div>
+        </div>  
         <div class="col s10 offset-s1">
             <table class="z-depth-5 ">
                 <thead>
@@ -52,8 +46,9 @@
                             <td>{{x.horario_inicio}}</td>
                             <td>{{x.horario_termino}}</td>
                             <td>
-                                <a href="{% url 'informacoes_votacao' id=x.id %}">
-                                    Ver informações
+                                <a class="btn waves-effect  green lighten-3 z-depth-1 " href="{% url 'informacoes_votacao' id=x.id %}"  >
+                                    <i class="material-icons right">info</i>
+                                    Ver informações                                     
                                 </a>
                             </td>
                         </tr>

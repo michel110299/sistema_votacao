@@ -10,7 +10,7 @@
 
 <main>
     <div class="row">
-        <div class="col s4  margin20">
+        <div class="col s4 offset-s1 margin20">
             <form method="post">
                 {% csrf_token %}
                 {{ form.nome_completo|materializecss }}
@@ -27,7 +27,7 @@
                 
             </form>
         </div>
-        <div class="col s4 margin20">
+        <div class="col s4 offset-s1 margin20">
             <table class="z-depth-5 ">
                 <thead>
                   <tr>
@@ -50,12 +50,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col s2 offset-s1 margin20 ">
-            <a class=" btn waves-effect blue-grey lighten-1 z-depth-1 " href="{% url 'index'%}">
-                <i class="material-icons right">widgets</i>Menu
-            </a>
-
-        </div>
+        
 
     </div>
 

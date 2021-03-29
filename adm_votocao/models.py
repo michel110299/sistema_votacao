@@ -18,7 +18,8 @@ class Pessoa_voto(models.Model):
         verbose_name = "Opção de voto",
     )
     quantidade_votos = models.IntegerField(
-        verbose_name = "Quantidade de votos"
+        verbose_name = "Quantidade de votos",
+        default = 0,
     )
     class Meta:
         verbose_name = "votação/eleição"
