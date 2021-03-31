@@ -2,6 +2,18 @@
 {% load materializecss %}
 {%block conteudo%}
 
+
+
+{%if messages%}
+    {% for mensagem in messages%}
+        <div class="alert card green accent-1 green4-text text-darken-4">
+            <div class="card-content">
+                <p><i class="material-icons">report</i><span>Alerta:</span> {{mensagem}}</p>
+            </div>
+        </div>
+    {%endfor%}
+{% endif%}
+
 <main>
     <div class="row">
         <div class="col s8 offset-s1">
@@ -10,39 +22,39 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Eleitor</th>
-                                <th>Candito</th>
+                                <th>Candidato</th>
+                                <th>Codigo da votação</th>
                                 <th>Quantidade de votos </th>
+                                <th>Mais informações </th>
                             </tr>
                         </thead>            
                         <tbody>
-                            {% for obj in todas_votacoes %}
+                            {% for obj in objOpcaoVoto %}
                                 <tr>
                                     <td>
-                                        {%if votacao.anonimo != True%}
+                                        {{obj.nome_completo}}
 
-                                        {{obj.pessoa}}
-
-
-                                        {%else%}
-
-                                        Anônimo
-
-                                        {%endif%}
                                     </td>
                                     <td>
-                                        {{ obj.opcao_voto }}
+                                        {{ obj.codigo_votacao }}
                                     </td>
                                     <td>
                                         {{ obj.quantidade_votos }}
                                     </td>
-            
+                                    {%if votacao.anonimo != True %}
+                                        <td>
+                                            <a class="btn waves-effect  red lighten-2 z-depth-1 " href="{% url 'info_apuracao' obj.id %}">
+                                                <i class="material-icons right">fact_check</i>
+                                                Informação
+                                            </a>
+                                        </td>
+                                    {%endif%}
                                 </tr>
                             {% endfor%}
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div>  
         </div>
         <div class="col s2 margin20 ">
             <a class=" btn waves-effect blue-grey lighten-1 z-depth-1 " href="{% url 'index'%}">

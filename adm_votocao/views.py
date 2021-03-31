@@ -4,25 +4,34 @@ from django.contrib import messages
 from adm_votocao.models import Pessoa_voto
 
 
-def apuracao_votos(request,id_votacao):
+def info_apuracao(request,id_votacao):
 
+    objOpcaoVoto = Opcao_voto.objects.get(pk=id_votacao)
 
-    votacao = Votacao.objects.get(pk=id_votacao)
-
-    todas_votacoes = Pessoa_voto.objects.filter(votacao=votacao)
+    objPessoa_voto= Pessoa_voto.objects.filter(opcao_voto=objOpcaoVoto)
 
     context = {
-        "todas_votacoes":todas_votacoes,
-        "nome_pagina": votacao,
-        "votacao":votacao,
+        "todas_votacoes" : objPessoa_voto,
+        
     }
 
+    return render(request,"mais_info_apuracao.html",context)
 
+def apuracao_votos(request,id_votacao):
+
+    objvotacao = Votacao.objects.get(pk=id_votacao)
+
+    objOpcaoVoto = Opcao_voto.objects.filter(votacao=objvotacao)
+
+    context = {
+        "nome_pagina": objvotacao,
+        "votacao":objvotacao,
+        "objOpcaoVoto":objOpcaoVoto,
+    }
 
     return render(request,"apuracao_votos.html",context)
 
 def validacao_pessoa (request,id_votacao):
-    
 
     if request.POST:
         
@@ -32,7 +41,13 @@ def validacao_pessoa (request,id_votacao):
             objpessoa = Pessoa.objects.get(cpf=cpf_validacao)
             id_pessoa = objpessoa.id
 
-            return redirect("iniciar_votacao",id_votacao,id_pessoa) 
+            objvotacao = Votacao.objects.get(pk=id_votacao)
+
+            if Opcao_voto.objects.filter(votacao=objvotacao):
+
+                return redirect("iniciar_votacao",id_votacao,id_pessoa)
+            else:
+                messages.error(request,"Não tem nenhuma opção de voto, por favor cadastre!") 
             
         except Pessoa.DoesNotExist:
         
@@ -57,8 +72,6 @@ def iniciar_votacao(request,id_votacao,id_pessoa):
         messages.error(request,"O voto é unico!")
         return redirect("index") 
 
-
-
     listOpcaoVoto = Opcao_voto.objects.filter(votacao=objVotacao)
 
 
@@ -75,7 +88,6 @@ def iniciar_votacao(request,id_votacao,id_pessoa):
             objPessoa_voto = Pessoa_voto.objects.get(pessoa=objPessoa,votacao=objVotacao,opcao_voto=objOpcaoVoto)
             objPessoa_voto.quantidade_votos += 1
             
-
         except:
             objPessoa_voto = Pessoa_voto()
             objPessoa_voto.pessoa = objPessoa    
@@ -85,8 +97,9 @@ def iniciar_votacao(request,id_votacao,id_pessoa):
         
         
         objPessoa_voto.save()
-
-
+        
+        messages.success(request,"Votação feita com sucesso!")
+        
         return redirect('apuracao_votos',id_votacao)
 
 

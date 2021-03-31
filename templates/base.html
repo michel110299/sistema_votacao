@@ -9,7 +9,8 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
-        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+        <link type="text/css" rel="stylesheet" href="{% static 'css/custom.css' %}">
+        <script type="text/javascript" src="{% static 'js/custom.js'%}"></script>
         <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -54,16 +55,10 @@
         </nav>
 
     </header>
-        {%if messages%}
-            {% for mensagem in messages%}
-                <div class="alert alert-success" role="alert">
-                    {{mensagem}}
-                </div>
-            {%endfor%}
 
-        {% endif%}
 
-    {% block conteudo %}{% endblock conteudo %}
+    {% block conteudo %}
+    {% endblock conteudo %}
 
     <footer class="page-footer blue-grey darken-2">
         <div class="footer-copyright ">
@@ -75,7 +70,7 @@
     <script>
 
     $(document).ready(function(){
-        $('select').formSelect();
+        $('select').formSelect();s
         // // $('.datepicker').datepicker({
         //     i18n: {
         //     months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],

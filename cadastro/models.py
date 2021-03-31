@@ -9,7 +9,7 @@ class Pessoa(models.Model):
 
     cpf = models.CharField(
         verbose_name= "CPF",
-        max_length = 11,
+        max_length = 14,
         
     )
 

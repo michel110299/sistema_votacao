@@ -1,0 +1,50 @@
+{%extends "base.html" %}
+{% load materializecss %}
+{%block conteudo%}
+
+<main>
+    <div class="row">
+        <div class="col s8 offset-s1">
+            <div class="container">
+                <div class="row">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Eleitor</th>
+                                <th>Candito</th>
+                                <th>Quantidade de votos</th>
+                            </tr>
+                        </thead>   
+                        <tbody>
+                            {% for obj in todas_votacoes %}
+                                <tr>
+                                    <td>
+                                        {{obj.pessoa}}
+                                    </td>
+                                    <td>
+                                        {{ obj.opcao_voto }}
+                                    </td>
+                                    <td>
+                                        {{ obj.quantidade_votos }}
+                                    </td>
+                                </tr>
+                            {% endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+
+</main>
+
+
+
+{%endblock conteudo%}
+
+{% block scripts%}
+
+
+{% endblock%}

@@ -1,6 +1,17 @@
 {%extends "base.html"%}
 
 {%block conteudo%}
+
+{%if messages%}
+    {% for mensagem in messages%}
+            <div class="alert card red lighten-4 red-text text-darken-4">
+                <div class="card-content">
+                    <p><i class="material-icons">report</i><span>Alerta:</span> {{mensagem}}</p>
+                </div>
+            </div>
+    {%endfor%}
+
+{% endif%}
  
     <main>
     <div class="container">
@@ -25,8 +36,34 @@
                             <td>
                                 {{ obj.horario_termino }}
                             </td>
+                            {%if obj.horario_inicio > data_atual%}
+                                
+                            <td colspan="2">
+                                <a class="btn waves-effect green lighten-3 z-depth-1 " href="#">
+                                    <i class="material-icons right">hourglass_top</i>
+                                    Aguardando Inicio
+                                </a>
+
+                            </td>
+
+                            {%elif obj.horario_termino < data_atual%}
                             <td>
-                                <a class="btn waves-effect green lighten-3 z-depth-1 " href="{% url 'validacao_pessoa' obj.id %}">
+
+                                <a class="btn disabled  blue darken z-depth-1 " href="#">
+                                    Encerrado
+                                </a>
+
+                            </td>
+                            <td>
+                                <a class="btn waves-effect  red lighten-2 z-depth-1 " href="{% url 'apuracao_votos' obj.id %}">
+                                    <i class="material-icons right">fact_check</i>
+                                    Apuração
+                                </a>
+                            </td>
+                            
+                            {%else%}
+                            <td>
+                                <a class="btn waves-effect  lime darken-1 z-depth-1 " href="{% url 'validacao_pessoa' obj.id %}">
                                     <i class="material-icons right">thumb_up_alt</i>
                                     Votar
                                 </a>
@@ -37,6 +74,8 @@
                                     Apuração
                                 </a>
                             </td>
+                            {%endif%}
+                            
                             
                         </tr>
                     {% endfor%}

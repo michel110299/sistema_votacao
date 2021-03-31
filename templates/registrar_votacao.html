@@ -7,14 +7,14 @@
             $("#id_horario_termino").attr("type","text");    
             M.AutoInit();
             var dateField = MaterialDateTimePicker.create($('#id_horario_inicio'))
-            var dateField = MaterialDateTimePicker.create($('#id_horario_termino'))   
-        }); 
+            var dateField = MaterialDateTimePicker.create($('#id_horario_termino'))
+         }); 
 
 </script>  
 <main>
     <div class="row ">
         <div class="col s8 offset-s2 container z-depth-5 margin20 ">
-            <form method="post">
+            <form method="post" onsubmit="return validaDatas()">
                 {% csrf_token %}
                 {{ form|materializecss }}
 
@@ -56,14 +56,6 @@
                 </tbody>
             </table>
         </div>
-        
-
-
-        <!-- <div class="col s2  ">
-            <a class=" btn waves-effect green darken-3 z-depth-1 " href="{% url 'index'%}">
-                <i class="material-icons right">cancel</i>Cancelar
-            </a>
-        </div> -->
         
 
     </div>
